@@ -1,7 +1,6 @@
 import os
 import yt_dlp
 
-# Phone's Download folder
 download_folder = os.path.expanduser("~/storage/shared/Download")
 
 def download_video(url):
