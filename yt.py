@@ -1,9 +1,13 @@
+import os
 import yt_dlp
+
+# Phone's Download folder
+download_folder = os.path.expanduser("~/storage/shared/Download")
 
 def download_video(url):
     options = {
         "format": "bestvideo+bestaudio/best",
-        "outtmpl": "%(title)s.%(ext)s",
+        "outtmpl": os.path.join(download_folder, "%(title)s.%(ext)s"),
         "merge_output_format": "mp4",
     }
 
@@ -12,6 +16,7 @@ def download_video(url):
             ydl.download([url])
 
         print("\n✅ Download complete!")
+        print(f"📁 Saved to: {download_folder}")
 
     except Exception as e:
         print(f"\n❌ Error: {e}")
